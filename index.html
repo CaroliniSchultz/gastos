@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Razão — Controle Financeiro</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/tabler-icons.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+</head>
+<body>
+
+<!-- ============ TELA DE LOGIN / CADASTRO ============ -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <div class="auth-stamp">R$</div>
+    <h1>Meu Razão</h1>
+    <p class="auth-sub">Seu controle financeiro pessoal</p>
+
+    <div class="auth-error" id="auth-error"></div>
+
+    <form id="auth-form">
+      <div class="field">
+        <label for="auth-email">E-mail</label>
+        <input type="email" id="auth-email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="auth-password">Senha</label>
+        <input type="password" id="auth-password" required minlength="6" autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn" id="auth-submit">Entrar</button>
+    </form>
+
+    <p class="auth-toggle">
+      <span id="auth-toggle-text">Ainda não tem conta?</span>
+      <button class="btn-text" id="auth-toggle-btn">Criar conta</button>
+    </p>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-stamp">R$</div>
+      <span class="brand-name">Meu Razão</span>
+    </div>
+
+    <nav class="main-nav" id="main-nav">
+      <button data-view="dashboard" class="active"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><span>Painel</span></button>
+      <button data-view="transactions"><i class="ti ti-receipt" aria-hidden="true"></i><span>Lançamentos</span></button>
+      <button data-view="accounts"><i class="ti ti-credit-card" aria-hidden="true"></i><span>Contas e cartões</span></button>
+      <button data-view="categories"><i class="ti ti-tags" aria-hidden="true"></i><span>Categorias</span></button>
+      <button data-view="budgets"><i class="ti ti-target-arrow" aria-hidden="true"></i><span>Metas</span></button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p class="user-email" id="user-email-label"></p>
+      <button class="btn btn-secondary" id="logout-btn"><i class="ti ti-logout" aria-hidden="true"></i> <span>Sair</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- ---------- DASHBOARD ---------- -->
+    <section class="view active" id="view-dashboard">
+      <div class="view-header">
+        <div>
+          <p class="eyebrow" id="dash-month-label">Este mês</p>
+          <h2>Painel</h2>
+        </div>
+        <div class="toolbar">
+          <select id="dash-month-select"></select>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card stat-card">
+          <p class="stat-label">Saldo total</p>
+          <p class="stat-value mono" id="stat-saldo">R$ 0,00</p>
+        </div>
+        <div class="card stat-card">
+          <p class="stat-label">Receitas no mês</p>
+          <p class="stat-value income mono" id="stat-receitas">R$ 0,00</p>
+        </div>
+        <div class="card stat-card">
+          <p class="stat-label">Despesas no mês</p>
+          <p class="stat-value expense mono" id="stat-despesas">R$ 0,00</p>
+        </div>
+      </div>
+
+      <div class="chart-row">
+        <div class="card">
+          <h3>Receitas x despesas (6 meses)</h3>
+          <div style="position:relative;height:240px;">
+            <canvas id="chart-evolucao" role="img" aria-label="Gráfico de barras de receitas e despesas dos últimos seis meses"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Despesas por categoria</h3>
+          <div style="position:relative;height:240px;">
+            <canvas id="chart-categorias" role="img" aria-label="Gráfico de pizza com despesas do mês agrupadas por categoria"></canvas>
+          </div>
+          <div id="chart-categorias-legend" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12px;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Progresso das metas do mês</h3>
+        <div id="dash-budget-progress"></div>
+      </div>
+    </section>
+
+    <!-- ---------- LANÇAMENTOS ---------- -->
+    <section class="view" id="view-transactions">
+      <div class="view-header">
+        <h2>Lançamentos</h2>
+        <button class="fab-add" id="btn-new-transaction"><i class="ti ti-plus" aria-hidden="true"></i> Novo lançamento</button>
+      </div>
+
+      <div class="card" style="margin-bottom:16px;">
+        <div class="toolbar">
+          <select id="filter-month"></select>
+          <select id="filter-type">
+            <option value="todos">Todos os tipos</option>
+            <option value="receita">Receitas</option>
+            <option value="despesa">Despesas</option>
+          </select>
+          <select id="filter-category"><option value="todas">Todas as categorias</option></select>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ledger-list" id="transactions-list"></div>
+      </div>
+    </section>
+
+    <!-- ---------- CONTAS E CARTÕES ---------- -->
+    <section class="view" id="view-accounts">
+      <div class="view-header">
+        <h2>Contas e cartões</h2>
+        <button class="fab-add" id="btn-new-account"><i class="ti ti-plus" aria-hidden="true"></i> Nova conta/cartão</button>
+      </div>
+      <div class="grid-3" id="accounts-list"></div>
+    </section>
+
+    <!-- ---------- CATEGORIAS ---------- -->
+    <section class="view" id="view-categories">
+      <div class="view-header">
+        <h2>Categorias</h2>
+        <button class="fab-add" id="btn-new-category"><i class="ti ti-plus" aria-hidden="true"></i> Nova categoria</button>
+      </div>
+      <div class="card">
+        <div class="ledger-list" id="categories-list"></div>
+      </div>
+    </section>
+
+    <!-- ---------- METAS ---------- -->
+    <section class="view" id="view-budgets">
+      <div class="view-header">
+        <h2>Metas de orçamento</h2>
+        <button class="fab-add" id="btn-new-budget"><i class="ti ti-plus" aria-hidden="true"></i> Nova meta</button>
+      </div>
+      <div class="toolbar" style="margin-bottom:16px;">
+        <select id="budget-month-select"></select>
+      </div>
+      <div class="card">
+        <div id="budgets-list"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ MODAL GENÉRICO ============ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
