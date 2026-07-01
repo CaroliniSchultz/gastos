@@ -5,7 +5,7 @@
 // Veja o passo a passo no README.md (seção "1. Criar o Firebase").
 // ============================================================
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyXXXXXXXXXXXXXXXXXXXXX",
   authDomain: "gastos-xxxxx.firebaseapp.com",
   projectId: "gastos-xxxxx",
