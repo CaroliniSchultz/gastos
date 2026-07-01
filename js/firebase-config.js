@@ -5,11 +5,11 @@
 // Veja o passo a passo no README.md (seção "1. Criar o Firebase").
 // ============================================================
 
-export const firebaseConfig = {
-  apiKey: "COLE_AQUI_SUA_API_KEY",
-  authDomain: "COLE_AQUI.firebaseapp.com",
-  projectId: "COLE_AQUI_SEU_PROJECT_ID",
-  storageBucket: "COLE_AQUI.appspot.com",
-  messagingSenderId: "COLE_AQUI",
-  appId: "COLE_AQUI_SEU_APP_ID"
+const firebaseConfig = {
+  apiKey: "AIzaSyXXXXXXXXXXXXXXXXXXXXX",
+  authDomain: "gastos-xxxxx.firebaseapp.com",
+  projectId: "gastos-xxxxx",
+  storageBucket: "gastos-xxxxx.appspot.com",
+  messagingSenderId: "123456789012",
+  appId: "1:123456789012:web:abcxyz123"
 };
