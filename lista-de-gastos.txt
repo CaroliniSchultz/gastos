@@ -1,0 +1,44 @@
+Mercado: 114,00
+Mercado: 20,38
+Restaurante: 37,00
+Oficina: 15,00
+Uber: 11,83
+Cuidados pessoais: 180,00
+Mercado: 81,30
+Concurso: 118,40
+Delivery: 48,00
+Concurso: 200,00
+Concurso: 34,00
+Delivery: 48,00
+Restaurante: 26,50
+Restaurante: 10,00
+Mercado: 117,50
+Doce no trabalho: 16,00
+Mercado: 6,99
+Delivery: 30,00
+Camburiú-Uber: 24,51
+Camburiú - hotel: 257,00
+Camburiú- roda gigante: 89,00
+Camburiú-restaurante: 193,00
+Camburiú- sorvete: 26,00
+Camburiú-mercado: 20,45
+Camburiú-Restaurante: 50,50
+Mercado: 153,74
+Mercado: 90,34
+Sorvete: 9,51
+Academia: 115,00
+Mercado: 14,55
+Choppe: 15,00
+Passagem de onibus: 22,90
+Farmácia: 12,00
+Sorvete: 26,00
+Ifood: 30,49
+Mercado: 42,50
+Mercado: 33,32
+Amazom: 105,00
+Mercado: 42,76
+Sorvete: 13,42
+Mercado: 118,35
+Mercado: 26,42
+Guloseima trabalho: 13,91
+Mercado: 39,22
