@@ -125,7 +125,10 @@
     <section class="view" id="view-transactions">
       <div class="view-header">
         <h2>Lançamentos</h2>
-        <button class="fab-add" id="btn-new-transaction"><i class="ti ti-plus" aria-hidden="true"></i> Novo lançamento</button>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-secondary" id="btn-import-transactions" style="width:auto;"><i class="ti ti-clipboard-list" aria-hidden="true"></i> Importar lista</button>
+          <button class="fab-add" id="btn-new-transaction"><i class="ti ti-plus" aria-hidden="true"></i> Novo lançamento</button>
+        </div>
       </div>
 
       <div class="card" style="margin-bottom:16px;">
@@ -139,6 +142,15 @@
           <select id="filter-category"><option value="todas">Todas as categorias</option></select>
           <input type="text" id="filter-search" placeholder="Buscar por descrição..." style="flex:1;min-width:160px;">
           <button class="btn btn-secondary" id="btn-export-csv" style="width:auto;white-space:nowrap;"><i class="ti ti-download" aria-hidden="true"></i> Exportar CSV</button>
+        </div>
+      </div>
+
+      <div class="card" id="bulk-actions-bar" style="margin-bottom:16px;display:none;align-items:center;justify-content:space-between;padding:12px 22px;">
+        <span style="font-size:13px;" id="bulk-actions-count">0 selecionados</span>
+        <div style="display:flex;gap:8px;">
+          <button type="button" class="btn btn-text" id="btn-select-all-tx">Selecionar todos do mês</button>
+          <button type="button" class="btn btn-secondary" id="btn-clear-selection" style="width:auto;">Limpar seleção</button>
+          <button type="button" class="btn" id="btn-delete-selected" style="width:auto;background:var(--expense);"><i class="ti ti-trash" aria-hidden="true"></i> Excluir selecionados</button>
         </div>
       </div>
 
