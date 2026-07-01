@@ -11,6 +11,5 @@ export const firebaseConfig = {
   projectId: "gastos-3bcb2",
   storageBucket: "gastos-3bcb2.firebasestorage.app",
   messagingSenderId: "454435610652",
-  appId: "1:454435610652:web:738a644febe0073a6bffd9",
-  measurementId: "G-141W40ZN45"
+  appId: "1:454435610652:web:738a644febe0073a6bffd9"
 };
